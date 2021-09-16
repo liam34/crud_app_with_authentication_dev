@@ -5,7 +5,7 @@ if (process.env.NODE_ENV !== 'production') {
 const express = require('express');
 const dotenv = require('dotenv');
 const morgan = require('morgan');
-const bodyparser = require("body-parser");
+const bodyparser = require('body-parser');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
@@ -73,7 +73,7 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 })
 
 app.delete('/logout', (req, res) => {
-    req.logOut
+    req.logOut()
     res.redirect('/login')
 })
 
