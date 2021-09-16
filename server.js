@@ -36,6 +36,7 @@ app.use(session({
 }))
 app.use(passport.initialize())
 app.use(passport.session())
+app.use(methodOverride('_method'))
 
 app.get('/', checkAuthenticated, (req, res) => {
     res.render('welcome.ejs', { name: req.user.name })
@@ -69,6 +70,11 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
         res.redirect('/register')
     }
     console.log(users)
+})
+
+app.delete('/logout', (req, res) => {
+    req.logOut
+    res.redirect('/login')
 })
 
 function checkAuthenticated(req, res, next) {
